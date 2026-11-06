@@ -1,0 +1,7 @@
+{
+  "focused_tests": {"passed": 62, "seconds": 1.43, "command": ".venv/bin/python -m pytest tests/test_car_astra_programmer.py tests/test_car_policy.py tests/test_car_programmer.py -q"},
+  "full_suite": {"passed": 873, "skipped": 1, "seconds": 36.34, "command": ".venv/bin/python -m pytest tests -q"},
+  "cpu_focused_tests": {"passed": 57, "seconds": 9.71, "interpreter": ".venv-car/bin/python"},
+  "tests_perform_paid_inference": false,
+  "cpu_evaluation_environment": ".venv-car/bin/python"
+}

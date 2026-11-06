@@ -1,0 +1,72 @@
+{
+  "actual_bill_usd": null,
+  "applied_statements": 2,
+  "artifact_sha256": {
+    "edited-1024.json": "b257b47ff763b4698ece9b62b32f9e22dcbffa53935e80fbd296583afc0ca9b2",
+    "edited.npz": "56b7a9546ab0737d2673d8b6fb4a2ba2f111c4c576355a43b03ef77365b82051",
+    "freeze.json": "1996d88b6900bb1cbac35ba9513dc8ba06a77325f9df398a0df40db4fad245af",
+    "main-request.json": "4e5aeaa21be2ff18cea439bb98c5949f7b86609877951e93343759a094cf8c4b",
+    "main-response-body.json": "e8ba7939f9c4acdecad78d04aa5e98a580ed3e87205f746fc76492d0c0bdeb96",
+    "paired-1024.json": "2ee0c4c8e257015688b444f90b0267abff9e0d6bbc70c198c24a34a56dfb12e7",
+    "reply.txt": "e24cf44113c72b733d9b883d48a19ce48dafeab2b55347f3817054c7b9ad96f8"
+  },
+  "astra": {
+    "episodes": 1024,
+    "invalid": 0,
+    "mean_length": 247.66015625,
+    "mean_return": 0.10655529417272191,
+    "red": 39,
+    "success": 0,
+    "timeout": 985,
+    "wall_seconds": 373.96989599999506
+  },
+  "baseline": {
+    "episodes": 1024,
+    "invalid": 0,
+    "mean_length": 256.0,
+    "mean_return": 0.1519051768555073,
+    "red": 0,
+    "success": 0,
+    "timeout": 1024
+  },
+  "baseline_sources_unchanged": true,
+  "changed_coordinates": 2,
+  "changed_fraction": 1.1650666418119116e-05,
+  "finish_reason": "stop",
+  "model_wall_seconds": 271.9688337080297,
+  "no_feedback_or_second_repair": true,
+  "paired": {
+    "baseline_success": 0,
+    "common_random_numbers": true,
+    "edited_success": 0,
+    "episodes": 1024,
+    "freeze_reply_sha256": "e24cf44113c72b733d9b883d48a19ce48dafeab2b55347f3817054c7b9ad96f8",
+    "gained_success": 0,
+    "lost_success": 0,
+    "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+    "seed": 20261105,
+    "success_rate_difference": 0.0
+  },
+  "paper_bit_exact": false,
+  "pricing_scenario_usd_not_invoice": 37.9519,
+  "requested_model": "openai-gpt-6-astra",
+  "returned_model": "openai-gpt-6-astra",
+  "skipped_statements": 0,
+  "usage": {
+    "completion_tokens": 13898,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 13466,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens": 351723,
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cache_write_tokens": 351721,
+      "cached_tokens": 0
+    },
+    "total_tokens": 365621
+  },
+  "weight_delta_l2": 100.35039093901875
+}

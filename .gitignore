@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.venv-car/
+*.egg-info/
+build/
+dist/
+.env
+.env.*
+!.env.example
+artifacts/
+checkpoints/

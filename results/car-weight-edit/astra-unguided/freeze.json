@@ -1,0 +1,18 @@
+{
+  "reply_sha256": "e24cf44113c72b733d9b883d48a19ce48dafeab2b55347f3817054c7b9ad96f8",
+  "original_tensor_sha256": "43a9581a32fde30220ae6cfa5ededba12c881b9aed04401047350f81f27f1a72",
+  "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+  "status": "frozen",
+  "blocks_found": 1,
+  "applied": [
+    "actor_head.b[0] = -100",
+    "actor_head.b[1] = 8.052"
+  ],
+  "skipped": [],
+  "changed_coordinates": 2,
+  "total_coordinates": 171664,
+  "nonidentity": true,
+  "tensor_sha256": "8ac75aa44424124c884bde6a61004724121260eb239e0b0ab6343d0b0a03c961",
+  "parser_policy": "last block; sequential edits; unreadable statements skipped and audited as original prompt specifies",
+  "edited_archive_sha256": "56b7a9546ab0737d2673d8b6fb4a2ba2f111c4c576355a43b03ef77365b82051"
+}

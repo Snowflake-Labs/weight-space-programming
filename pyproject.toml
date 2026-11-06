@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snowflake-weight-space-programming"
+version = "0.1.0"
+description = "Weight-space programming on Snowflake: GPT-6 Astra edits a policy network's weights directly"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = ["numpy", "requests"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

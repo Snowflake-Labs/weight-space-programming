@@ -1,0 +1,50 @@
+{
+  "applied_statements": 55,
+  "artifact_sha256": {
+    "edited-1024.json": "1ef28382fa1b0d4d067486f377f51fb5ad37f97f571654daec932a4925a6a87d",
+    "edited.npz": "bb0230d892d284a263f1fc99aaf9ab04a10409dc6614c0c541dce096df52c092",
+    "freeze.json": "d647be379e29c47e00d77186bcbc5d44d61c9a0964a9a7941eb3317663b2f245",
+    "paired-1024.json": "9d616b4c798384cd30133e8b295d16cc63159a290cd34cfc5e91dbf88c1c7601",
+    "reply.txt": "9223c1e70cb3f4a7d219a34bbbbccdebc9cacc05b30f697a55029a37a991564c"
+  },
+  "baseline": {
+    "episodes": 1024,
+    "invalid": 0,
+    "mean_length": 256.0,
+    "mean_return": 0.1519051768555073,
+    "red": 0,
+    "success": 0,
+    "timeout": 1024,
+    "wall_seconds": 381.8672099579708
+  },
+  "changed_coordinates": 7326,
+  "edited": {
+    "episodes": 1024,
+    "invalid": 0,
+    "mean_length": 91.8759765625,
+    "mean_return": 1.3736427158582956,
+    "red": 0,
+    "success": 1024,
+    "timeout": 0,
+    "wall_seconds": 368.82772512501106
+  },
+  "grader_changed": false,
+  "paired": {
+    "baseline_success": 0,
+    "common_random_numbers": true,
+    "edited_success": 1024,
+    "episodes": 1024,
+    "freeze_reply_sha256": "9223c1e70cb3f4a7d219a34bbbbccdebc9cacc05b30f697a55029a37a991564c",
+    "gained_success": 1024,
+    "lost_success": 0,
+    "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+    "seed": 20261105,
+    "success_rate_difference": 1.0
+  },
+  "paper_bit_exact": false,
+  "policy": "car-astra-guided",
+  "skipped_statements": 0,
+  "source_authorship": "fresh_guided_astra",
+  "total_coordinates": 171664,
+  "weight_delta_l2": 971.8298417903466
+}

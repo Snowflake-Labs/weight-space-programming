@@ -1,0 +1,18 @@
+**Diagnosis.** The policy has learned to approach the goal, but not to commit to the ramp crossing.
+
+The weights show substantial motion feedback: `embed.W[54,116] = 2.25`, `embed.W[236,116] = 2.37`, and `embed.W[254,116] = 1.73` connect the chassis and both wheels’ horizontal velocities to one embedding unit. At the output, several units strongly trade motor-off against positive drive—for example, head row 6 is `[0.683, -0.638, -0.005]`, and row 114 is `[0.667, -0.641, -0.019]`.
+
+The rollout identifies what this feedback achieves: the car approaches leftward, climbs partly onto the ramp, then remains near chassis \(x=2\), alternating between no torque and positive drive. Positive drive is the correct direction: counter-clockwise wheels propel the car left. The problem is losing momentum before clearing the ramp and red strip, not reversed motor wiring. Off supplies no torque; it does not maintain climbing speed against gravity and contact friction.
+
+That partial approach earns about \(0.15\) shaping reward without risking the red-contact penalty—a plausible local optimum. I retain the trained representation and state-dependent motor-direction weights, but remove the coasting choice that sustains this unsuccessful behavior.
+
+```edits
+actor_head.b[0] = -100
+actor_head.b[1] = 8.052
+```
+
+These edits make motor-off negligibly likely and strongly favor sustained leftward drive. The additional forward margin prevents removing the dominant off action from accidentally promoting a previously tiny reverse probability.
+
+All embedding weights, hidden layers, output weights, and unused action entries remain unchanged. State-dependent reverse decisions remain possible when their learned evidence outweighs the forward margin.
+
+The intended physical change is to build and retain momentum through the ramp rather than settle with the chassis supported near its tip, allowing the green wheel to clear the red strip. This is an untested intervention, not a measured success-rate claim.

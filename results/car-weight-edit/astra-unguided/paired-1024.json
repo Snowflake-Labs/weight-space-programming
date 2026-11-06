@@ -1,0 +1,12 @@
+{
+  "baseline_success": 0,
+  "common_random_numbers": true,
+  "edited_success": 0,
+  "episodes": 1024,
+  "freeze_reply_sha256": "e24cf44113c72b733d9b883d48a19ce48dafeab2b55347f3817054c7b9ad96f8",
+  "gained_success": 0,
+  "lost_success": 0,
+  "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+  "seed": 20261105,
+  "success_rate_difference": 0.0
+}

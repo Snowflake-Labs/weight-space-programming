@@ -1,0 +1,112 @@
+### Why the trained policy fails
+
+The motor is connected, and the network does respond to motion. For example, `embed.W[54,116] = 2.25` and `embed.W[236,116] = 2.37` encode the body’s and green wheel’s horizontal velocities. The output head strongly contrasts **off** with **positive drive**: rows 6 and 114 have first-three weights `[0.683,-0.638,-0.005]` and `[0.667,-0.641,-0.019]`.
+
+The trace shows the resulting failure: it approaches the ramp correctly, but then repeatedly chooses off or positive drive while stalled astride the crest. Reverse is effectively absent. The green wheel is beyond the ramp tip, but has not crossed the red strip. This earns distance-shaping reward without risking the terminal penalty, yet never completes the crossing. The small reverse bias, `-0.194`, is not by itself the explanation; the state-dependent hidden contributions suppress reverse.
+
+A constant preference for either direction is inadequate. Positive wheel rotation drives left and reacts clockwise on the chassis; negative rotation backs right and reacts counter-clockwise. I use these differently for obtaining a run-up and controlling pitch after takeoff.
+
+### Repair conditions and activation checks
+
+Let:
+- \(X=x[52]\), \(V=x[54]\): body horizontal position and velocity;
+- \(R=x[252]\): right wheel’s horizontal position;
+- \(G=x[64]+0.7x[65]+x[59]\): pitch and angular-velocity feedback.
+
+The repair uses these nominal conditions, with narrow, smooth transition bands:
+
+| Condition | Intervention |
+|---|---|
+| \(1.90<X<2.70\), \(V>-2.00\) | Back up instead of attempting a slow crossing |
+| \(X>1.90\), \(V>0.15\), \(X<3.50\) | Continue backing up |
+| \(X<2.70\), or \(X>3.50\), or \(V<-1.50\) | Commit to positive drive |
+| \(R<1.93\) and \(G<0\) | Negative-drive pitch correction after passing the ramp |
+
+Reverse interventions take priority over the forward boost. At rest, \(G=0\) corresponds approximately to \(\theta=-0.61\): a moderately raised left/green end. Excessively negative pitch or angular velocity makes \(G\) negative, requesting counter-clockwise correction—not more clockwise rotation.
+
+Four embedding units carry \(X,V+10,R,G+3\). These offsets preserve signed information through ReLU; \(G+3\ge0.3\). The next layers implement the comparisons and conjunctions. Saturated false decisions become zero-valued output gates; true decisions become approximately `0.995`.
+
+Checks:
+- Initial state: both gates are zero, leaving the retained policy in control.
+- `X=2.60, V=-0.5`: reverse overrides forward.
+- `X=3.10, V=2`: backing continues.
+- `X=3.70, V=2`: positive drive brakes and turns the car.
+- `X=2.60, V=-3`: positive drive maintains the run-up.
+- Airborne with `R=1.85`, `theta=-1`, and negative angular velocity: reverse corrects pitch.
+
+The forward gate supplies about **318** logits of preference. Reverse retains about **677** over positive drive even when both gates activate. Both exceed a conservative **250** bound on the retained head’s logit differences.
+
+```edits
+# Four observation features; retain the other embedding units.
+embed.W[:, 6:9] = 0
+embed.W[:, 13] = 0
+embed.b[6:9] = [0, 10, 0]
+embed.b[13] = 3
+embed.W[52, 6] = 1
+embed.W[54, 7] = 1
+embed.W[252, 8] = 1
+embed.W[64, 13] = 1
+embed.W[65, 13] = 0.7
+embed.W[59, 13] = 1
+
+# Isolated comparisons: X<2.70, X>1.90, V>-2,
+# V>0.15, X<3.50, V<-1.50, R<1.93, G<0.
+actor0.W[6:9, :] = 0
+actor0.W[13, :] = 0
+actor0.W[:, 120:128] = 0
+actor0.b[120:128] = [108, -76, -80, -203, 140, 85, 77.2, 90]
+actor0.W[6, 120] = -40
+actor0.W[6, 121] = 40
+actor0.W[7, 122] = 10
+actor0.W[7, 123] = 20
+actor0.W[6, 124] = -40
+actor0.W[7, 125] = -10
+actor0.W[8, 126] = -40
+actor0.W[13, 127] = -30
+
+# Slow approach, continuing retreat, forward boost, airborne correction.
+actor1.W[120:128, :] = 0
+actor1.W[:, 124:128] = 0
+actor1.b[124:128] = [-24, -24, 23, -14]
+actor1.W[120, 124] = 10
+actor1.W[121, 124] = 10
+actor1.W[122, 124] = 10
+actor1.W[121, 125] = 10
+actor1.W[123, 125] = 10
+actor1.W[124, 125] = 10
+actor1.W[120, 126] = 10
+actor1.W[124, 126] = -10
+actor1.W[125, 126] = 10
+actor1.W[126, 127] = 10
+actor1.W[127, 127] = 10
+
+# Combine reverse requests; retain a separate forward request.
+actor2.W[124:128, :] = 0
+actor2.W[:, 126:128] = 0
+actor2.b[126:128] = [20, 0]
+actor2.W[124, 126] = 10
+actor2.W[125, 126] = 10
+actor2.W[127, 126] = 10
+actor2.W[126, 127] = 10
+
+# Convert saturated false/true signals into zero/positive gates.
+actor3.W[126:128, :] = 0
+actor3.W[:, 126:128] = 0
+actor3.b[126:128] = 2
+actor3.W[126, 126] = 2
+actor3.W[127, 127] = 2
+
+actor4.W[126:128, :] = 0
+actor4.W[:, 126:128] = 0
+actor4.b[126:128] = 0
+actor4.W[126, 126] = 3
+actor4.W[127, 127] = 3
+
+# Only the physically effective action receives repair logits.
+actor_head.W[126, 0:3] = [-500, -500, 500]
+actor_head.W[127, 0:3] = [-160, 160, -160]
+```
+
+These edits retain most learned features and connections, with the trained policy remaining the fallback. The added branch replaces the slow crest approach with a retreat and faster committed crossing. Once the right wheel passes the ramp, the same reverse action becomes a pitch correction rather than a retreat.
+
+The large logit margins make the interventions reliable under action sampling, while the initial state receives no repair bias. This is an untested hand-designed repair; I cannot establish its success rate without running the episodes.

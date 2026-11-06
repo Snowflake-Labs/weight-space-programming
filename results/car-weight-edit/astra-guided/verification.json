@@ -1,0 +1,10 @@
+{
+  "offline_focused_default_environment": {"passed": 60, "skipped": 1, "seconds": 0.36},
+  "offline_focused_pinned_cpu_environment": {"passed": 61, "skipped": 0, "seconds": 7.84},
+  "full_suite": {"passed": 877, "skipped": 1, "seconds": 33.73, "pytest_override": "tmp_path_retention_policy=failed"},
+  "initial_full_suite_attempt": "Failed with OS error 28 (disk exhausted); removed only that run's temporary pytest-107 directory and reran successfully.",
+  "grader_modified": false,
+  "historical_results_overwritten": false,
+  "model_retries": 0,
+  "extra_preflight_calls": 0
+}

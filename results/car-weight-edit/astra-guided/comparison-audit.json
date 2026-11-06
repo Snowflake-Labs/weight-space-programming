@@ -1,0 +1,175 @@
+{
+  "actual_bill_usd": null,
+  "control": {
+    "applied_statements": 51,
+    "artifact_sha256": {
+      "edited-1024.json": "4450530d978aec896d2d92135ef80447440bb9291488f02a1dbfa36ba3ed75d3",
+      "edited.npz": "523062268830f18550a3b6118561c3f5dee955f4220355fc4137a026ece54533",
+      "freeze.json": "08ca2052218ac8c18b0979f8c496979e115166d55894369fb32aa414687f7c55",
+      "paired-1024.json": "ee18d99770a5841d7101f1b7d5804903f734435c119eb01597eedaf68f1c641f",
+      "reply.txt": "dc295adb701bb943a6a324fd7fd4aeb97bb69a2d8fb73b9472e3a9371275f959"
+    },
+    "baseline": {
+      "episodes": 1024,
+      "invalid": 0,
+      "mean_length": 256.0,
+      "mean_return": 0.1519051768555073,
+      "red": 0,
+      "success": 0,
+      "timeout": 1024,
+      "wall_seconds": 381.8672099579708
+    },
+    "changed_coordinates": 6073,
+    "coordinate_count_matches_report": true,
+    "edited": {
+      "episodes": 1024,
+      "invalid": 0,
+      "mean_length": 73.0,
+      "mean_return": 1.3738476485013962,
+      "red": 0,
+      "success": 1024,
+      "timeout": 0,
+      "wall_seconds": 381.28429341700394
+    },
+    "grader_changed": false,
+    "paired": {
+      "baseline_success": 0,
+      "common_random_numbers": true,
+      "edited_success": 1024,
+      "episodes": 1024,
+      "freeze_reply_sha256": "dc295adb701bb943a6a324fd7fd4aeb97bb69a2d8fb73b9472e3a9371275f959",
+      "gained_success": 1024,
+      "lost_success": 0,
+      "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+      "seed": 20261105,
+      "success_rate_difference": 1.0
+    },
+    "paper_bit_exact": false,
+    "policy": "car-published-control",
+    "positive_control_validated": true,
+    "reported_reference_coordinates": 6073,
+    "reported_reference_statements": 51,
+    "skipped_statements": 0,
+    "source_authorship": "published",
+    "statement_count_matches_report": true,
+    "total_coordinates": 171664,
+    "weight_delta_l2": 1329.5751667518193
+  },
+  "exact_saved_payload_verified": true,
+  "finish_reason": "stop",
+  "grader_changed": false,
+  "guided": {
+    "applied_statements": 55,
+    "artifact_sha256": {
+      "edited-1024.json": "1ef28382fa1b0d4d067486f377f51fb5ad37f97f571654daec932a4925a6a87d",
+      "edited.npz": "bb0230d892d284a263f1fc99aaf9ab04a10409dc6614c0c541dce096df52c092",
+      "freeze.json": "d647be379e29c47e00d77186bcbc5d44d61c9a0964a9a7941eb3317663b2f245",
+      "paired-1024.json": "9d616b4c798384cd30133e8b295d16cc63159a290cd34cfc5e91dbf88c1c7601",
+      "reply.txt": "9223c1e70cb3f4a7d219a34bbbbccdebc9cacc05b30f697a55029a37a991564c"
+    },
+    "baseline": {
+      "episodes": 1024,
+      "invalid": 0,
+      "mean_length": 256.0,
+      "mean_return": 0.1519051768555073,
+      "red": 0,
+      "success": 0,
+      "timeout": 1024,
+      "wall_seconds": 381.8672099579708
+    },
+    "changed_coordinates": 7326,
+    "edited": {
+      "episodes": 1024,
+      "invalid": 0,
+      "mean_length": 91.8759765625,
+      "mean_return": 1.3736427158582956,
+      "red": 0,
+      "success": 1024,
+      "timeout": 0,
+      "wall_seconds": 368.82772512501106
+    },
+    "grader_changed": false,
+    "paired": {
+      "baseline_success": 0,
+      "common_random_numbers": true,
+      "edited_success": 1024,
+      "episodes": 1024,
+      "freeze_reply_sha256": "9223c1e70cb3f4a7d219a34bbbbccdebc9cacc05b30f697a55029a37a991564c",
+      "gained_success": 1024,
+      "lost_success": 0,
+      "protocol_sha256": "d219ae74d3121e3c6e373231fffde588207ec5434ed0635c31bbf8535e07e29e",
+      "seed": 20261105,
+      "success_rate_difference": 1.0
+    },
+    "paper_bit_exact": false,
+    "policy": "car-astra-guided",
+    "skipped_statements": 0,
+    "source_authorship": "fresh_guided_astra",
+    "total_coordinates": 171664,
+    "weight_delta_l2": 971.8298417903466
+  },
+  "guided_prompt_sha256": "dbc076e87507f5e05b9ccf9db09eed2c06ffa0ffd292f78d9bb4c5354da8db1f",
+  "historical_unguided_astra": {
+    "episodes": 1024,
+    "invalid": 0,
+    "mean_length": 247.66015625,
+    "mean_return": 0.10655529417272191,
+    "red": 39,
+    "success": 0,
+    "timeout": 985,
+    "wall_seconds": 373.96989599999506
+  },
+  "model_wall_seconds": 270.4160170420073,
+  "no_feedback_or_second_repair": true,
+  "original_prompt_sha256": "2ed66051f4fa554d43d0163eb48e4256dc80aef78d875a218826beefeb7d0559",
+  "paper_bit_exact": false,
+  "pricing_scenario_usd_not_invoice": 38.418400000000005,
+  "request_sha256": "bb891f2aeaea06ee9a53eab0ebc367e29e07e509c9f61685a0c260b71744829a",
+  "requested_model": "openai-gpt-6-astra",
+  "returned_model": "openai-gpt-6-astra",
+  "source_sha256": {
+    "scripts/car_astra_programmer.py": "80739e70f7efa1cb409f5d636e47eec7465d797874081be22e2230f3db4a512f",
+    "scripts/car_guided_experiment.py": "46e5ebfcd5527ed65f80088626079c03273f18b4f27a837e2644cbb18801758e",
+    "scripts/car_oneshot.py": "a0a5b9dedb3aeb7a2474c7e929b88d01818b92f633e5e9b885db76b8374ffb09",
+    "src/weight_space/car_policy.py": "a0f5e090dab6ccd2b5af14ef4db3a281d9e00d43602c101e1b29fee583ed16f1"
+  },
+  "usage": {
+    "completion_tokens": 16200,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 14476,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens": 351784,
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cache_write_tokens": 351782,
+      "cached_tokens": 0
+    },
+    "total_tokens": 367984
+  },
+  "verification": {
+    "extra_preflight_calls": 0,
+    "full_suite": {
+      "passed": 877,
+      "pytest_override": "tmp_path_retention_policy=failed",
+      "seconds": 33.73,
+      "skipped": 1
+    },
+    "grader_modified": false,
+    "historical_results_overwritten": false,
+    "initial_full_suite_attempt": "Failed with OS error 28 (disk exhausted); removed only that run's temporary pytest-107 directory and reran successfully.",
+    "model_retries": 0,
+    "offline_focused_default_environment": {
+      "passed": 60,
+      "seconds": 0.36,
+      "skipped": 1
+    },
+    "offline_focused_pinned_cpu_environment": {
+      "passed": 61,
+      "seconds": 7.84,
+      "skipped": 0
+    }
+  }
+}
